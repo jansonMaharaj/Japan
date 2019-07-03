@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <h1>create a new campground</h1>
 
@@ -6,7 +6,9 @@
 <form action="/campgrounds" method="POST">
     <input type="text" name="name" placeholder="name">
     <input type="text" name="image" placeholder="image url">
+    <input type="text" name="imageCity" placeholder="image2 url">
     <input type="text" name="description" placeholder="description">
+    <input type="text" name="descriptionCity" placeholder="description2">
     <button>submit!</button>
 
 
@@ -14,4 +16,4 @@
 
 </form>
 
-<% include partials/footer %>
+<% include ../partials/footer %>
