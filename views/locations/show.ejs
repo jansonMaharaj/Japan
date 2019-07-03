@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+<div class="container">
+
+    <h1 class="jumbotron justify text-center"><%= location.name%></h1>
+     <div>
+         
+         <img src="<%= location.image%>"alt="">
+        </div>
+        <p><%= location.description%></p>
+        
+        <div>
+
+            <img src="<%= location.imageCity%>"alt="">
+
+        </div>
+    
+    <p><%= location.descriptionCity%></p>
+    <p><a class="btn btn-primary" href="/locations/<%=location._id%>/comments/new">Add New Comment</a></p>
+    <% location.comments.forEach(function(comment) {%>
+        <p>
+            <strong><%= comment.author %> </strong> - <%= comment.text %>
+        </p>
+    <%})%>
+    
+</div>
+
+<% include ../partials/footer %>
