@@ -24,37 +24,37 @@ var data = [
 function seedDB() {
     //removes all locations
     Locations.remove({}, function(err) {
-        if(err) {
-            console.log(err);
-        }
-        console.log("removed locations!");
+        // if(err) {
+        //     console.log(err);
+        // }
+       // console.log("removed locations!");
         //add a few locations
-        data.forEach(function(seed) {
-            Locations.create(seed, function(err, location) {
-                if(err) {
-                    console.log("err");
-                } else {
-                    console.log("added a location");
-                    //create a comment
-                    Comment.create(
-                        {
-                            text: "this palce is great",
-                            author: "john"
-                        }, function(err, comment) {
-                            if(err) {
-                                console.log("err");
-                            } else {
-                                //add a few comments
-                                location.comments.push(comment);
-                                location.save();
-                                console.log("created new comment");
+        // data.forEach(function(seed) {
+        //     Locations.create(seed, function(err, location) {
+        //         if(err) {
+        //             console.log("err");
+        //         } else {
+        //             console.log("added a location");
+        //             //create a comment
+        //             Comment.create(
+        //                 {
+        //                     text: "this palce is great",
+        //                     author: "john"
+        //                 }, function(err, comment) {
+        //                     if(err) {
+        //                         console.log("err");
+        //                     } else {
+        //                         //add a few comments
+        //                         location.comments.push(comment);
+        //                         location.save();
+        //                         console.log("created new comment");
 
-                            }
+        //                     }
                         
-                    });
-                }
-            })
-        })
+        //             });
+        //         }
+        //     })
+        // })
     })
 }
 
