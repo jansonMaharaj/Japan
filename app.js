@@ -4,6 +4,7 @@ var bodyParser      = require("body-parser");
 var mongoose        = require("mongoose");
 var passport        = require("passport");
 var LocalStrategy   = require("passport-local");
+var methodOverride  = require("method-override");
 var Location        = require("./models/locations");
 var Comment         = require("./models/comments");
 var User            = require("./models/user");
@@ -14,11 +15,11 @@ var commentRoutes   = require("./routes/comments");
 var locationsRoutes = require("./routes/locations");
 var indexRoutes     = require("./routes/index");
 //SEED THE DATABASE
-// seedDB();
+//  seedDB();
 mongoose.connect("mongodb://localhost:27017/japan", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
-
+app.use(methodOverride("_method"));
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret : " once again Rusty wins cutest dog",

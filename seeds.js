@@ -23,7 +23,7 @@ var data = [
 
 function seedDB() {
     //removes all locations
-    Locations.remove({}, function(err) {
+    Locations.deleteMany({}, function(err) {
         // if(err) {
         //     console.log(err);
         // }
