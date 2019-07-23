@@ -1,5 +1,6 @@
 var express         = require("express");
 var app             = express();
+var flash           = require("connect-flash");
 var bodyParser      = require("body-parser");
 var mongoose        = require("mongoose");
 var passport        = require("passport");
@@ -14,12 +15,20 @@ var seedDB          = require("./seeds");
 var commentRoutes   = require("./routes/comments");
 var locationsRoutes = require("./routes/locations");
 var indexRoutes     = require("./routes/index");
+
+
 //SEED THE DATABASE
 //  seedDB();
+
+//Creating Database
 mongoose.connect("mongodb://localhost:27017/japan", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
+
+
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret : " once again Rusty wins cutest dog",
@@ -34,6 +43,8 @@ passport.deserializeUser( User.deserializeUser());
 
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 

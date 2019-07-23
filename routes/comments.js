@@ -2,10 +2,11 @@ var express         = require("express");
 var router          = express.Router({mergeParams: true});
 var Location        = require("../models/locations");
 var Comment         = require("../models/comments");
+var middleware      = require("../middleware");
 
 
 // COMMENTS NEW
-router.get("/new" , isLoggedIn, function(req,res) {
+router.get("/new" , middleware.isLoggedIn, function(req,res) {
     //find location by id
     Location.findById(req.params.id, function(err, location) {
         if(err){
@@ -18,17 +19,17 @@ router.get("/new" , isLoggedIn, function(req,res) {
 });
 
 //COMMENTS CREATE
-router.post("/", isLoggedIn, function (req,res) {
+router.post("/", middleware.isLoggedIn, function (req,res) {
     // lookup location using ID
     Location.findById(req.params.id, function(err, location) {
         if(err) {
             console.log(err);
             res.redirect("/locations");
-        }else {
-           
+        }else {   
             //create new comment
             Comment.create(req.body.comment, function (err, comment) {
                 if(err) {
+                    req.flash("error", "something went wrong");
                     console.log(err);
                 } else {
                     //add username and id to comment
@@ -41,6 +42,7 @@ router.post("/", isLoggedIn, function (req,res) {
                     location.save();
                     //redirect location show page
                     console.log(comment);
+                    req.flash("success", "Successfully added comment");
                     res.redirect("/locations/" + location._id);
                 }
             });
@@ -51,7 +53,7 @@ router.post("/", isLoggedIn, function (req,res) {
 });
 
 //COMMENT EDIT ROUTE
-router.get("/:comment_id/edit" , checkCommentOwnership, function(req , res) {
+router.get("/:comment_id/edit" , middleware.checkCommentOwnership, function(req , res) {
     Comment.findById(req.params.comment_id, function (err, foundComment) {
         if(err) {
             res.redirect("back");
@@ -63,56 +65,30 @@ router.get("/:comment_id/edit" , checkCommentOwnership, function(req , res) {
 });
 
 //COMMENT UPDATE
-router.put("/:comment_id", checkCommentOwnership , function(req,res) {
+router.put("/:comment_id", middleware.checkCommentOwnership , function(req,res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
         if(err) {
             
             res.redirect("back");
         } else {
+            req.flash("succes", "Comment Updated");
             res.redirect("/locations/" + req.params.id);
         }
     });
 });
 
 //COMMENT DELETE
-router.delete("/:comment_id", checkCommentOwnership ,function(req, res) {
+router.delete("/:comment_id", middleware.checkCommentOwnership ,function(req, res) {
     //find by id and remove
     Comment.findByIdAndRemove(req.params.comment_id, function(err) {
         if(err) {
             res.redirect("back");
         } else {
+            req.flash("success", "Comment Deleted");
             res.redirect("/locations/" + req.params.id);
         }
     });
 });
 
-//MIDDLEWARE
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()) {
-        return next();
-
-    }
-    res.redirect("/login");
-}
-
-
-function checkCommentOwnership(req,res,next) {
-    if (req.isAuthenticated()) {
-        Comment.findById(req.params.comment_id, function (err, foundComment) {
-            if(err) {
-                res.redirect("back");
-            } else {
-                // does user own comments
-                if(foundComment.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.redirect("back");
-                }
-            }
-        });
-    } else {
-        res.redirect("back");
-    }
-}
 
 module.exports = router;

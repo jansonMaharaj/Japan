@@ -1,6 +1,7 @@
 var express         = require("express");
 var router          = express.Router();
 var Location        = require("../models/locations");
+var Comment         = require("../models/comments");
 
 
 //LOCATIONS - shows all locations
