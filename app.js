@@ -12,9 +12,11 @@ var User            = require("./models/user");
 var seedDB          = require("./seeds");
 
 //REQUIRUNG ROUTES
-var commentRoutes   = require("./routes/comments");
-var locationsRoutes = require("./routes/locations");
-var indexRoutes     = require("./routes/index");
+var commentRoutes           = require("./routes/comments");
+var eventsCommentRoutes     = require("./routes/commentsEvent");
+var locationsRoutes         = require("./routes/locations");
+var eventsRoutes            = require("./routes/events");
+var indexRoutes             = require("./routes/index");
 
 
 //SEED THE DATABASE
@@ -51,5 +53,7 @@ app.use(function(req, res, next) {
 app.use("/", indexRoutes);
 app.use("/locations", locationsRoutes);
 app.use("/locations/:id/comments", commentRoutes);
+app.use("/events", eventsRoutes);
+app.use("/events/:id/comments", eventsCommentRoutes);
 
 app.listen(3000);

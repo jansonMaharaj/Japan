@@ -4,3 +4,8 @@
 .card {
     padding: 0;
 }
+
+.navbar {
+    min-height: 60px;
+  }
+  

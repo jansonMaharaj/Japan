@@ -1,0 +1,75 @@
+<% include ../partials/header %>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1 class="display-3 text-left text-uppercase"><%= event.name%></h1>
+            <div class="card border-0">
+
+
+                    <div class="card-body">
+                        <img class="card-img-top" src="<%= event.image%>" alt="">
+                        <p class="card-text lead"><%= event.description%></p>
+                        <img src="<%= event.imageCity%>" alt="">
+    
+                        <p class="card-text lead"><%= event.descriptionCity%></p>
+    
+                    </div>
+                </div>
+                
+  <div class="card mb-3">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Accommodations</h5>
+      <p class="card-text">Find out more on some great places to stay</p>
+      <a href="https://www.airbnb.co.nz/a/Japan?af=1922719&c=.pi0.pk67692830835_333224220372_c_140050756&sem_position=1t1&sem_target=aud-147966862801:kwd-140050756&location_of_interest=&location_physical=1011056&gclid=CjwKCAjwg-DpBRBbEiwAEV1_-EEaUOuHuMUlKBhVykAx_LfSteXcUDpjRO9AE5_588Q-dylfrijFLBoC0bEQAvD_BwE" class="btn btn-outline-success btn-sm">More Info</a>
+    </div>
+  </div>
+
+           
+
+            <hr>
+
+            
+            <div class="jumbotron">
+                <h1 class="display-4">Comment Section</h1>
+                <p class="lead">Let us know what u think!</p>
+                <hr class="my-4">
+                
+                <div class="well">
+                    <div class="text-right">
+                        <a class="btn btn-primary" href="/events/<%=event._id%>/comments/new">Add New Comment</a>
+                    </div>
+                    <% event.comments.forEach(function(comment) {%>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            <span class="text-right">10 days ago</span>
+                            <p>
+                                <%= comment.text %>
+                            </p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                            <a class="btn btn-xs btn-warning" href="/events/<%=event._id%>/comments/<%=comment._id%>/edit">
+                                Edit
+                            </a>
+                            <form action="/events/<%=event._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <%})%>
+    
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+
+<!-- <header class="jumbotron my-0">
+    <h1>Welcome to events page!</h1>
+    <p>View our evets around Japan </p>
+    <p>
+        <a class="btn btn-primary btn-large" href="/events/new"> add a new campground</a>
+    </p>
+</header> -->
+
+<div class="card bg-dark text-white my-0">
+    <img src="https://images.unsplash.com/photo-1520163004802-7aadfcd17529?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2110&q=80" class="card-img" alt="...">
+    <div class="card-img-overlay blockquote text-right my-5">
+      <h1 class="card-title display-1 align-middle lead">EVENTS IN JAPAN</h1>
+      <p class="card-text h3 blockquote">THINGS TO DO!</p>
+      <p class="card-text h2 blockquote">WHERE TO GO!</p>
+    </div>
+  </div>
+
+
+<div class="container">
+
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    
+        <% for (var i = 0; i < events.length; i++) { %>
+        <div class="col-lg-4">
+    
+            <div class="card border-danger shadow-lg p-3 mb-5 bg-white rounded mb-2">
+                <img src="<%= events[i].image %>" class="card-img-topm" alt="location img">
+                <div class="card-body">
+                    <h2 class="card-title"> <%= events[i].name %> </h2>
+                    <a href="/events/<%= events[i]._id %>" class="btn btn-outline-success btn-sm">More Info</a>
+                </div>
+            </div>
+    
+    
+        </div>
+        <% } %>
+    
+    </div>
+
+
+</div>
+
+<% include ../partials/footer %>

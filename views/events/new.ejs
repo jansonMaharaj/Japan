@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+<h1>create a new event</h1>
+
+
+<form action="/events" method="POST">
+    <input type="text" name="name" placeholder="name">
+    <input type="text" name="image" placeholder="image url">
+    <input type="text" name="imageCity" placeholder="image2 url">
+    <input type="text" name="description" placeholder="description">
+    <input type="text" name="descriptionCity" placeholder="description2">
+    <button>submit!</button>
+
+
+    <a href="/events">go back</a>
+
+</form>
+
+<% include ../partials/footer %>
