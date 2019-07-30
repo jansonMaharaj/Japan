@@ -18,7 +18,7 @@
 <body>
   
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-      <a class="navbar-brand mb-0 h1" href="/">Sakura Journey</a>
+      <a class=" nav-link text-dark h3" href="/">Sakura Journey</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,26 +26,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/locations">Cities<span class="sr-only">(current)</span></a>
+            <a class="nav-link h5 mt-2" href="/locations">Cities<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/events">Events</a>
+            <a class="nav-link h5 mt-2" href="/events">Events</a>
           </li>
         </ul>
         <ul class="navbar-nav mr-0">
           <% if(!currentUser) { %>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="/register">Sign Up</a>
+                <a class="nav-link h5 mt-2" href="/register">Sign Up</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link h5 mt-2" href="/login">Login</a>
               </li>
           <% } else { %>
               <li class="nav-item">
-                <a class="nav-link" href="#"><%= currentUser.username %> </a>
+                <a class="nav-link h5 mt-2" href="#"><%= currentUser.username %> </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/logout">logout</a>
+                <a class="nav-link h5 mt-2" href="/logout">logout</a>
               </li>
           <% } %>
         </ul>

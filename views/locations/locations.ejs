@@ -3,33 +3,49 @@
 
 
 <header class="jumbotron">
+    <h1 class="ml-5">Welcome to Sakura Journey</h1>
+    <p class="lead ml-2">This website is dedicated to anyone who is planning to visit Japan and is looking to have easy
+        access to information we have gathered from 6 major cities, as well as some exciting things to do in each of
+        those cities, some accommodation choices and of course what national events Japan has to offer.
+
+        While browsing we also hope you get a glimpse into some of Japan’s rich culture and history.
+
+        The cities we selected are Hiroshima, Kyoto, Sapporo, Sendai, Tokyo and Yokohama as we felt that these are
+        probably the most popular and interesting choices.</p>
+    <hr class="my-4">
+    <p class="lead text-right">Please feel free to add comments.
+
+        We sincerely hope you enjoy everything this website has to offer as much as we enjoyed making it.</p>
+</header>
+<!-- 
+<div>
     <h1>Welcome to location page!</h1>
     <p>View our locations around Japan </p>
     <p>
         <a class="btn btn-primary btn-large" href="/locations/new"> add a new campground</a>
     </p>
-</header>
+</div> -->
 
 
 <div class="container">
 
     <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-    
+
         <% for (var i = 0; i < locations.length; i++) { %>
         <div class="col-lg-4">
-    
-            <div class="card border-danger shadow-lg p-3 mb-5 bg-white rounded mb-2">
+
+            <div class="card border-danger shadow-lg p-3 bg-white rounded mb-2">
                 <img src="<%= locations[i].image %>" class="card-img-topm" alt="location img">
                 <div class="card-body">
                     <h2 class="card-title"> <%= locations[i].name %> </h2>
                     <a href="/locations/<%= locations[i]._id %>" class="btn btn-outline-success btn-sm">More Info</a>
                 </div>
             </div>
-    
-    
+
+
         </div>
         <% } %>
-    
+
     </div>
 
 

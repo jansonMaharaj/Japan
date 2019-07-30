@@ -27,15 +27,30 @@ router.get("/", function (req, res) {
 router.post("/", function (req, res) {
     var name = req.body.name;
     var image = req.body.image;
-    var imageCity = req.body.imageCity;
-    var descriptionCity = req.body.descriptionCity;
     var description = req.body.description;
+    var thingsTitleOne = req.body.thingsTitleOne;
+    var thingsTitleTwo = req.body.thingsTitleTwo;
+    var thingsTitleThree = req.body.thingsTitleThree;
+    var thingsDescriptionOne = req.body.thingsDescriptionOne;
+    var thingsDescriptionTwo = req.body.thingsDescriptionTwo;
+    var thingsDescriptionThree = req.body.thingsDescriptionThree;
+    var thingsPicOne = req.body.thingsPicOne;
+    var thingsPicTwo = req.body.thingsPicTwo;
+    var thingsPicThree = req.body.thingsPicThree;
     var newLocation = {
         name: name,
         image: image,
-        imageCity: imageCity,
         description:description,
-        descriptionCity:descriptionCity
+        thingsTitleOne:thingsTitleOne,
+        thingsTitleTwo: thingsTitleTwo,
+        thingsTitleThree: thingsTitleThree,
+        thingsDescriptionOne:thingsDescriptionOne,
+        thingsDescriptionTwo:thingsDescriptionTwo,
+        thingsDescriptionThree: thingsDescriptionThree,
+        thingsPicOne:thingsPicOne,
+        thingsPicTwo:thingsPicTwo,
+        thingsPicThree:thingsPicThree
+        
     }
     //CREATE A NEW LOCATION AND SAVE TO DB
     Location.create(newLocation, function (err, newlyCreated) {
