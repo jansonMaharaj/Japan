@@ -1,23 +1,23 @@
 <% include ../partials/header %>
 
+<div>
+    <header class="jumbotron my-0 mb-3">
+        <h1>WELCOME TO THE EVENTS PAGE!</h1>
+        <p>View our events around Japan </p>
+        <!-- <p>
+            <a class="btn btn-primary btn-large" href="/events/new"> add a new campground</a>
+        </p> -->
+    </header>
+</div>
 
-<header class="jumbotron my-0">
-    <h1>Welcome to events page!</h1>
-    <p>View our evets around Japan </p>
-    <p>
-        <a class="btn btn-primary btn-large" href="/events/new"> add a new campground</a>
-    </p>
-</header>
 
 
-
+<!-- DISPLAYING ALL EVENTS FROM DATABASE -->
 <div class="container">
-
     <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-
         <% for (var i = 0; i < events.length; i++) { %>
         <div class="col-lg-4">
-            <div class="card border-danger shadow-lg p-3 bg-white rounded mb-2">
+            <div class="card border-danger shadow-lg p-0 bg-white rounded mb-2">
                 <img src="<%= events[i].image %>" class="card-img-topm" alt="location img">
                 <div class="card-body">
                     <h2 class="card-title"> <%= events[i].name %> </h2>
@@ -26,7 +26,6 @@
             </div>
         </div>
         <% } %>
-
     </div>
 </div>
 
