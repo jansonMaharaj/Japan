@@ -6,6 +6,6 @@ visit https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 and follow instructions to connect mongoDB 
 
 
-running the website
-in a new terminal run new command 
+Running the website.
+In a new terminal run new command 
 node app.js
